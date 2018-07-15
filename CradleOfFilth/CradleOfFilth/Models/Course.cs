@@ -18,7 +18,8 @@ namespace CradleOfFilth.Models
     {
         [Display(Name = "Public Static Void")] PublicStaticVoid = 1,
         Shredding,
-        [Display(Name = "Air Guital")] AirGuitar,
-
+        [Display(Name = "Air Guitar")] AirGuitar,
+        [Display(Name = "Music Theory")] MusicTheory,
+        Pentagram
     }
 }
