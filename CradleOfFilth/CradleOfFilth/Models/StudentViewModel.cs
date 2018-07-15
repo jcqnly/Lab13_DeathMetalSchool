@@ -5,10 +5,8 @@ using System.Threading.Tasks;
 
 namespace CradleOfFilth.Models
 {
-    public class Student
+    public class StudentViewModel
     {
-        public int ID { get; set; }
-        public string Name { get; set; }
-        public int CourseID { get; set; }
+        public List<Student> students;
     }
 }
