@@ -1,0 +1,40 @@
+﻿@model CradleOfFilth.Models.CourseViewModel
+@{
+    Layout = "_Layout";
+}
+
+<h4>Our offerings at the Cradle of Filth School of Death Metal</h4>
+<table>
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Courses[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Courses[0].Description)
+            </th>
+            <th>
+                Options
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var course in Model.Courses)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelitem => course.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelitem => course.Description)
+                </td>
+                <td>
+                    <a asp-controller="Course" asp-action="Details" asp-route-id="@course.ID">Details</a>
+                    <a asp-controller="Course" asp-action="Edit" asp-route-id="@course.ID">Edit</a>
+                    <a asp-controller="Course" asp-action="Delete" asp-route-id="@course.ID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a class="btn btn-success" asp-controller="Course" asp-action="Create">Create A Course</a>
