@@ -1,6 +1,7 @@
 ﻿using CradleOfFilth.Data;
 using CradleOfFilth.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,24 @@ namespace CradleOfFilth.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string searchString)
+        {
+            var courses = _context.Courses.ToList().AsQueryable();
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                courses = courses.Where(s => s.Name.ToLower().Contains(searchString.ToLower()));
+            }
+
+            CourseViewModel cvm = new CourseViewModel()
+            {
+                Courses = courses.ToList()
+            };
+            return View(cvm);
+
+        }
+
+        public IActionResult ViewAll()
         {
             List<Course> courses = _context.Courses.ToList();
             CourseViewModel cvm = new CourseViewModel()
