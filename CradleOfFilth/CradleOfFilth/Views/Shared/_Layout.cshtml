@@ -10,24 +10,22 @@
     <title>Cradle of Filth Death Metal School</title>
 </head>
 <body>
-    <header class="nav navbar-static-top">
-        <nav class="navbar navbar-expand-sm navbar-dark bg-success">
-        <a href="/" class="navbar-brand">Cradle of Filth Death Metal School</a>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-success">
+        <a href="/" class="navbar-brand">Cradle of Filth</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar7">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="navbar-collapse collapse" id="navbar7">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" asp-controller="#" asp-action="ViewCourses">View Courses</a>
+                    <a class="nav-link" asp-controller="Course" asp-action="Index">View All Courses</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" asp-controller="#" asp-action="ViewStudents">View Students</a>
+                    <a class="nav-link" asp-controller="Student" asp-action="Index">View All Studentss</a>
                 </li>
             </ul>
         </div>
     </nav>
-    </header>
 
     <div>
         @RenderBody()
