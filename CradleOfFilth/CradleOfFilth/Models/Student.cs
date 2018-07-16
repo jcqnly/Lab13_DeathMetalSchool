@@ -9,6 +9,6 @@ namespace CradleOfFilth.Models
     {
         public int ID { get; set; }
         public string Name { get; set; }
-        public Course Course { get; set; }
+        public int CourseID { get; set; }
     }
 }

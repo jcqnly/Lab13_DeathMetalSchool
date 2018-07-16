@@ -9,17 +9,8 @@ namespace CradleOfFilth.Models
     public class Course
     {
         public int ID { get; set; }
-        public CourseName CourseName { get; set; }
+        public string CourseName { get; set; }
         public string Description { get; set; }
         public List<Student> Students { get; set; }
-    }
-
-    public enum CourseName
-    {
-        [Display(Name = "Public Static Void")] PublicStaticVoid = 1,
-        Shredding,
-        [Display(Name = "Air Guitar")] AirGuitar,
-        [Display(Name = "Music Theory")] MusicTheory,
-        Pentagram
     }
 }

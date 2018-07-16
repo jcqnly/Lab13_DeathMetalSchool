@@ -7,6 +7,6 @@ namespace CradleOfFilth.Models
 {
     public class CourseViewModel
     {
-        public List<Course> courses;
+        public List<Course> Courses;
     }
 }
