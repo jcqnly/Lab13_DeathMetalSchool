@@ -8,7 +8,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Courses[0].CourseName)
+                @Html.DisplayNameFor(model => model.Courses[0].Name)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Courses[0].Description)
@@ -23,7 +23,7 @@
         { 
         <tr>
             <td>
-                @Html.DisplayFor(modelitem => course.CourseName)
+                @Html.DisplayFor(modelitem => course.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelitem => course.Description)

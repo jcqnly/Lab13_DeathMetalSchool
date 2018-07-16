@@ -12,6 +12,7 @@ namespace CradleOfFilth.Controllers
     public class CourseController : Controller
     {
         private MetalDbContext _context;
+
         public CourseController(MetalDbContext context)
         {
             _context = context;
@@ -41,30 +42,42 @@ namespace CradleOfFilth.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(int id, [Bind("ID, Name, Description")]Course course)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("ID, Name, Description")] Course course)
         {
-            await _context.AddAsync(course);
+            await _context.Courses.AddAsync(course);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 
-        [HttpGet]
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id.HasValue)
+            if (id == null)
             {
-                var foundCourse = await _context.Courses.FindAsync(id);
-                return View(foundCourse);             
+                return NotFound();
             }
-            return RedirectToAction("Index");
-            
+
+            var course = await _context.Courses.FindAsync(id);
+            if (course == null)
+            {
+                return NotFound();
+            }
+            return View(course);
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("ID, Name, Description")] Course course)
         {
-            _context.Update(course);
-            await _context.SaveChangesAsync();
+            if (id != course.ID)
+                return NotFound();
+
+            if (ModelState.IsValid)
+            {
+                _context.Update(course);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
             return View(course);
         }
 
